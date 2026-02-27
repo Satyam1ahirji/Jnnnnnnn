@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivani ❤️ Infinite Universe</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif;}
+body{background:black;color:white;overflow-x:hidden;}
+
+/* LOCK */
+#lock{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+#lock input{padding:10px;border-radius:10px;border:none;margin:10px;}
+#lock button{padding:8px 20px;border:none;border-radius:20px;cursor:pointer;}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:25px;
+padding:15px;
+background:rgba(0,0,0,0.8);
+z-index:2000;
+}
+nav a{cursor:pointer;color:pink;font-weight:bold;}
+
+.page{
+display:none;
+min-height:100vh;
+padding:120px 20px;
+text-align:center;
+}
+.page.active{display:block;}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{background:#00ff99;color:black;}
+#no{background:red;color:white;position:absolute;}
+
+.loveRain{
+position:fixed;
+top:-20px;
+color:pink;
+animation:fall 5s linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(100vh);opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<div id="lock">
+<h2>Enter Password ❤️</h2>
+<input type="password" id="pass">
+<button onclick="unlock()">Unlock</button>
+<p id="err"></p>
+</div>
+
+<nav>
+<a onclick="show('home')">Home</a>
+<a onclick="show('story')">Story</a>
+<a onclick="show('proposal')">Proposal</a>
+<a onclick="show('secret')">Secret</a>
+</nav>
+
+<div id="home" class="page active">
+<h1>Welcome Shivani ❤️</h1>
+<button onclick="startCinema()">Start 2 Hour Cinematic Mode 🎬</button>
+</div>
+
+<div id="story" class="page">
+<h1>2000 Love Chapters</h1>
+<div id="chapters"></div>
+<button onclick="generateLove()">Generate 5000 I Love You</button>
+<div id="loveList"></div>
+<button onclick="infiniteStory()">Generate Endless Story</button>
+<div id="infinite"></div>
+</div>
+
+<div id="proposal" class="page">
+<h1>Will You Stay Forever? 💍</h1>
+<button id="yes" onclick="celebrate()">YES</button>
+<button id="no">NO</button>
+</div>
+
+<div id="secret" class="page">
+<h1>Secret Love Message</h1>
+<p>You are my infinite forever ❤️</p>
+</div>
+
+<script>
+
+/* PASSWORD */
+const password="infiniteLove@2026";
+function unlock(){
+if(document.getElementById("pass").value===password){
+document.getElementById("lock").style.display="none";
+}else{
+document.getElementById("err").innerText="Wrong Password 💔";
+}
+}
+
+/* PAGE */
+function show(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+/* 2000 CHAPTERS */
+for(let i=1;i<=2000;i++){
+let p=document.createElement("p");
+p.innerText="Chapter "+i+": Loving Shivani makes every second magical.";
+document.getElementById("chapters").appendChild(p);
+}
+
+/* 5000 LOVE */
+function generateLove(){
+let box=document.getElementById("loveList");
+box.innerHTML="";
+for(let i=1;i<=5000;i++){
+let p=document.createElement("p");
+p.innerText="I Love You Shivani ❤️ ("+i+")";
+box.appendChild(p);
+}
+}
+
+/* INFINITE STORY */
+function infiniteStory(){
+setInterval(()=>{
+let p=document.createElement("p");
+p.innerText="Every heartbeat whispers Shivani ❤️";
+document.getElementById("infinite").appendChild(p);
+},1000);
+}
+
+/* CINEMATIC AUTO SCROLL (2 Hour Slow) */
+function startCinema(){
+let speed=0.3;
+setInterval(()=>{
+window.scrollBy(0,speed);
+},20);
+}
+
+/* RUNNING NO */
+let no=document.getElementById("no");
+no.addEventListener("mouseover",()=>{
+no.style.top=Math.random()*80+"vh";
+no.style.left=Math.random()*80+"vw";
+});
+
+/* LOVE RAIN */
+function celebrate(){
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="loveRain";
+h.innerText="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},200);
+alert("Forever Begins ❤️");
+}
+
+/* STARS */
+for(let i=0;i<1000;i++){
+let s=document.createElement("div");
+s.style.position="fixed";
+s.style.width="2px";
+s.style.height="2px";
+s.style.background="white";
+s.style.top=Math.random()*100+"vh";
+s.style.left=Math.random()*100+"vw";
+document.body.appendChild(s);
+}
+
+</script>
+
+</body>
+</html>
